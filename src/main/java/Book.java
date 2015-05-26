@@ -19,6 +19,7 @@ public class Book implements Serializable {
     }
     public void setId(Integer id) {
         this.id = id;
+
     }
     public String getTitle() {
         return title;
