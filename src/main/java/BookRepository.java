@@ -1,5 +1,5 @@
-/**
- * Created by Lars De Pauw on 26/05/15.
- */
-public class BookRepository {
+import java.util.List;
+
+public interface BookRepository {
+    List<Book> findAllBooks();
 }
