@@ -4,6 +4,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
+
 @Entity
 public class Book implements Serializable {
     @Id

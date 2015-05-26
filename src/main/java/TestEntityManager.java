@@ -1,5 +1,5 @@
 
-import org.junit.Test;
+import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,24 +11,12 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class TestEntityManager {
-    private EntityManager em;
-    private Logger logger = LoggerFactory.getLogger(TestEntityManager.class);
-
+public class TestEntityManager extends AbstractTestEntityManager {
 
     @Test
-    public void testOurLogic() {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("RealDolmenPersistenceUnit");
-        EntityManager em = entityManagerFactory.createEntityManager();
-        em.getTransaction().begin();
-
-        BookRepository bookRepository = new BookRepositoryBean(em);
-        List<Book> books = bookRepository.findAllBooks();
+    public void testOurLogic() throws Exception {
+        List<Book> books = em.createQuery("select b from Book b", Book.class).getResultList();
         assertEquals(7, books.size());
-
-        em.getTransaction().commit();
-        em.close();
-        entityManagerFactory.close();
 
 
     }
